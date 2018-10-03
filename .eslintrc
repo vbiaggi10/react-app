@@ -1,0 +1,9 @@
+{
+    "extends": "react-app",
+    "env": {
+        "browser": true
+      },
+      "parserOptions": {
+        "ecmaVersion": 6
+    }
+}

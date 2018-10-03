@@ -1,0 +1,22 @@
+{
+  "homepage": "https://vbiaggi10.github.io/lim-2018-01-todo-list-frameworks/",
+  "name": "to-do-list",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "gh-pages": "^2.0.0",
+    "npm": "^6.4.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^1.1.5"
+  },
+  "scripts": {
+    "deploy": "yarn build && gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

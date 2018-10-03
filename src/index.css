@@ -1,0 +1,132 @@
+
+@media only screen and (min-width: 320px) {
+  .navbar form{
+    flex-flow: column;
+  }
+  .content-bg {
+    background: url('./img/wallpaper.jpeg') center center no-repeat;
+    background-size: cover;
+    /* display: flex; */
+    /* align-items: center; */
+    height: 100%;
+  }
+  .profile-card{
+    flex-flow: nowrap;
+  }
+
+  .profile-card .imgProfile{
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    margin: 0.7rem auto;
+  }
+  .profile-card .card-body{
+    text-align: left;
+  }
+  .containerM{
+    display: block;
+    width: 90%;
+  }
+  progress{
+    width: 100%;
+    word-wrap: break-word;
+  }
+  .form-control:disabled{
+    background: transparent;
+  }
+  .btn-status{
+    cursor: pointer;
+  }
+  .btn-active{
+    color: #009688 !important;
+    font-weight: bolder;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .navbar form{
+    flex-flow: nowrap;
+  }
+  .content-bg {
+    height: 100vh;
+  }
+  /* .card .imgProfile{
+    height: 5rem;
+    width: 5rem;
+  } */
+}
+
+
+
+.content-bg .bg-transp {
+  background: #ffffffb4;
+  padding: 1rem;
+}
+
+.desactive {
+  color: rgba(0, 0, 0, .54);
+  border-bottom: .214rem solid transparent;
+}
+
+[class^="bmd-label"] {
+  color: rgba(0, 0, 0, 0.7);
+}
+.main{
+  margin: 0;
+  padding: 0;
+}
+.collapse{
+  display: inline-block;
+  width: 30%;
+}
+
+.nav-menu{
+  display: flex;
+  justify-content: space-around;
+  margin: 2%;
+  padding: 2% 1%;
+}
+.header a{
+  text-decoration: none;
+  color: white;
+}
+.dropdown{
+  list-style: none;
+  font-size: 20px;
+  text-decoration: none;
+  
+}
+.header {
+  min-height: 50px;
+}
+.menu {
+  background: #0097A7;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+.container-header{
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5%; 
+}
+
+.card .card-body .card-title{
+  font-size: 1rem;
+}
+
+.createPost {
+  width: auto;
+  background-color: #b1b1b19d;
+}
+.containerM .col-md-7{
+  padding: 2%;
+  margin: auto;
+}
+.create-post .form-group, .create-post div .tools button{
+  margin-bottom: 0;
+}
+.card .card-header{
+  padding: 0 1rem;
+}
