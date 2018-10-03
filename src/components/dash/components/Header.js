@@ -28,8 +28,8 @@ class Header extends Component {
     const { title, items } = this.props;
     return (
       <div className="header">
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a className="navbar-brand" href="">{title}</a>
+        <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+          <a className="navbar-brand text-white">{title}</a>
           <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false">
             <span className="navbar-toggler-icon"></span>
           </button>

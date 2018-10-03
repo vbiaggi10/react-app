@@ -8,7 +8,8 @@ class Tasks extends Component {
     this.myRef = React.createRef();
     this.myUpdate = React.createRef();
     this.state = {
-      tasks: []
+      tasks: [],
+      aux: 0
     }
 
     this.database = window.firebase
@@ -16,12 +17,13 @@ class Tasks extends Component {
       .ref(localStorage.getItem('userID') + "/list/" + localStorage.getItem('listID') + "/tasks");
 
     this.removeTask = this.removeTask.bind(this);
+    this.updateTask = this.updateTask.bind(this);
   }
 
   componentDidMount() {
     let { tasks } = this.state;
-
     this.database.orderByChild("timestamp").on("child_added", snap => {
+      // tasks = [];
       tasks.push({
         id: snap.key,
         status: snap.val().status,
@@ -41,16 +43,21 @@ class Tasks extends Component {
       this.setState({ tasks });
     });
 
-    // this.database.on("child_changed", snap => {
-    //   this.setState({ tasks: [] });
-    //   tasks.push({
-    //     id: snap.key,
-    //     status: snap.val().status,
-    //     nameTask: snap.val().nameTask,
-    //     timestamp: snap.val().timestamp
-    //   });
-    //   this.setState({ tasks });
-    // });
+    this.database.on("child_changed", snap => {
+      tasks.map(task => {
+        if (task.id === snap.key) {
+          const indexUpdate = tasks.indexOf(task)
+          delete tasks[indexUpdate];
+        }
+      })
+      tasks.push({
+        id: snap.key,
+        status: snap.val().status,
+        nameTask: snap.val().nameTask,
+        timestamp: snap.val().timestamp
+      });
+      this.setState({ tasks });
+    });
   }
 
   removeTask(id) {
@@ -65,6 +72,39 @@ class Tasks extends Component {
     });
   }
 
+  updateTask(node, id, nameTask, status, timestamp) {
+    const updateBD = () => {
+      const taskData = {
+        nameTask: nameTask,
+        status: status,
+        timestamp: timestamp
+      };
+
+      const updatesTask = {};
+
+      updatesTask[
+        localStorage.getItem("userID") + "/list/" + localStorage.getItem("listID") + "/tasks/" + id
+      ] = taskData;
+      return window.firebase
+        .database()
+        .ref()
+        .update(updatesTask);
+    }
+
+    if (node !== '') {
+      if (this.state.aux === 0) {
+        this.setState({ aux: 1 });
+        node.disabled = false;
+      } else {
+        this.setState({ aux: 0 });
+        updateBD()
+        node.disabled = true;
+      }
+    } else {
+      updateBD()
+    }
+  }
+
   render() {
     return (
       <div className="container">
@@ -72,7 +112,7 @@ class Tasks extends Component {
           <h2>Tasks</h2>
         </div>
         <div className="row">
-          <div className="col-sm-4">
+          <div className="col-sm-4 target-tasks">
             <h3>To do</h3>
             <div className="form-group">
               <NewTask createTask={this.createTask} />
@@ -81,19 +121,20 @@ class Tasks extends Component {
               let paintTasks = '';
               if (task.status === 'todo') {
                 paintTasks = (<PaintTasks
-                  // ref={this.myUpdate}
+                  ref={this.myUpdate}
                   key={task.id}
                   id={task.id}
                   status={task.status}
                   nameTask={task.nameTask}
                   timestamp={task.timestamp}
                   removeTask={this.removeTask}
+                  updateTask={this.updateTask}
                 />)
               }
               return (paintTasks);
             })}
           </div>
-          <div className="col-sm-4">
+          <div className="col-sm-4 target-tasks">
             <h3>Doing</h3>
             {this.state.tasks.map(task => {
               let paintTasks = '';
@@ -105,12 +146,13 @@ class Tasks extends Component {
                   nameTask={task.nameTask}
                   timestamp={task.timestamp}
                   removeTask={this.removeTask}
+                  updateTask={this.updateTask}
                 />)
               }
               return (paintTasks);
             })}
           </div>
-          <div className="col-sm-4">
+          <div className="col-sm-4 target-tasks">
             <h3>Done</h3>
             {this.state.tasks.map(task => {
               let paintTasks = '';
@@ -122,6 +164,7 @@ class Tasks extends Component {
                   nameTask={task.nameTask}
                   timestamp={task.timestamp}
                   removeTask={this.removeTask}
+                  updateTask={this.updateTask}
                 />)
               }
               return (paintTasks);

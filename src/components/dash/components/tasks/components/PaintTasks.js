@@ -11,8 +11,7 @@ class PaintTasks extends Component {
     this.myUpdate = React.createRef();
     this.state = {
       nameTask: props.nameTask,
-      status: props.status,
-      aux: 0
+      status: props.status
     };
     // this.handleInput = this.handleInput.bind(this);
   }
@@ -23,30 +22,9 @@ class PaintTasks extends Component {
 
   handleUpdate(e) {
     const node = this.myRef.current;
-    if (this.state.aux === 0) {
-      this.setState({ aux: 1 });
-      node.disabled = false;
-    } else {
-      this.setState({ aux: 0 });
-      const taskData = {
-        nameTask: this.state.nameTask,
-        status: this.status,
-        timestamp: this.timestamp
-      };
-
-      const updatesTask = {};
-
-      updatesTask[
-        localStorage.getItem("userID") + "/list/" + localStorage.getItem("listID") + "/tasks/" + this.id
-      ] = taskData;
-
-      node.disabled = true;
-
-      return window.firebase
-        .database()
-        .ref()
-        .update(updatesTask);
-    }
+    this.props.updateTask(node, this.id, this.state.nameTask, this.status, this.timestamp);
+    // const node = this.myRef.current;
+    
   }
 
   handleChange(e){
@@ -58,22 +36,7 @@ class PaintTasks extends Component {
   }
 
   handleInput(e) {
-    const taskData = {
-      nameTask: this.state.nameTask,
-      status: e.target.name,
-      timestamp: this.timestamp
-    };
-
-    const updatesTask = {};
-
-    updatesTask[
-      localStorage.getItem("userID") + "/list/" + localStorage.getItem("listID") + "/tasks/" + this.id
-    ] = taskData;
-
-    return window.firebase
-      .database()
-      .ref()
-      .update(updatesTask);
+    this.props.updateTask('', this.id, this.state.nameTask, e.target.name, this.timestamp);
   }
 
   render() {
@@ -81,9 +44,9 @@ class PaintTasks extends Component {
       <div className="card mt-3 mb-3">
         <div className="card-body">
           <div className="card-subtitle mb-2 ">
-            <a href="" className={this.isActive("todo")} name="todo" onClick={this.handleInput.bind(this)}>To do</a>
-            <a href="" className={this.isActive("doing")} name="doing" onClick={this.handleInput.bind(this)}>Doing</a>
-            <a href="" className={this.isActive("done")} name="done" onClick={this.handleInput.bind(this)}>Done</a>
+            <a className={this.isActive("todo")} name="todo" onClick={this.handleInput.bind(this)}>To do</a>
+            <a className={this.isActive("doing")} name="doing" onClick={this.handleInput.bind(this)}>Doing</a>
+            <a className={this.isActive("done")} name="done" onClick={this.handleInput.bind(this)}>Done</a>
           </div>
           <div className="card-text">
             <input

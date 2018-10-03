@@ -57,8 +57,8 @@ class SignIn extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-light bg-light">
-        <a className="navbar-brand">TO DO LIST</a>
+      <nav className="navbar navbar-light bg-light sign-form">
+        <a className="navbar-brand">POST IT LIST</a>
         <div className="justify-content-end">
           <form onSubmit={this.handleSubmit.bind(this)} className="form-inline">
             <div className="form-group">
@@ -76,13 +76,6 @@ class SignIn extends Component {
                 onChange={this.entryAccount.bind(this)}
                 value={this.state.email}
               />
-              <span className="bmd-help">
-                We'll never share your email with anyone else.
-              </span>
-              <span className="bmd-help">
-                And this is probably from a second plugin showing in a
-                non-optimal way
-              </span>
             </div>
             <div className="form-group">
               <label
@@ -107,7 +100,7 @@ class SignIn extends Component {
           <a
             href=""
             onClick={this.resetPassword.bind(this)}
-            className="text-dark"
+            className="text-muted forgot-pass"
           >
             Forgot password?
           </a>

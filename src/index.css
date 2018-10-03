@@ -3,6 +3,12 @@
   .navbar form{
     flex-flow: column;
   }
+  .sign-form input{
+    text-indent: 10px;
+  }
+  .sign-form .forgot-pass{
+    font-size: .8rem;
+  }
   .content-bg {
     background: url('./img/wallpaper.jpeg') center center no-repeat;
     background-size: cover;
@@ -40,6 +46,13 @@
   .btn-active{
     color: #009688 !important;
     font-weight: bolder;
+  }
+  .target-tasks{
+    border: #009688;
+    border-style: groove;
+    border-width: .4rem;
+    border-radius: 1rem;
+    /* margin: .5rem; */
   }
 }
 @media only screen and (min-width: 768px) {

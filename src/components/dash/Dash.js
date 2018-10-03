@@ -11,7 +11,7 @@ class Dash extends Component {
         const { body } = this.props;
         return (
         <div className="main">
-            <Header props={this.props} title="TO DO LIST" items={items} />
+            <Header props={this.props} title="POST IT LIST" items={items} />
             <Content body={body} />
         </div>
     )
