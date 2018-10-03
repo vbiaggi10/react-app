@@ -1,4 +1,43 @@
-# To-do list con un framework
+# POST IT LIST with React JS
+
+
+## DEMO
+
+![todo-list](./src/img/demo.gif)
+
+## Resumen
+
+Aplicativo web basado en la metodologia "KANBAN" para la organización de tareas.
+
+## Modo de uso
+
+### - 1er paso
+
+Regístrate o ingresa con tu cuenta de Google para una mejor experiencia.
+
+### - 2do paso
+
+Una vez registrado, accede con el correo electrónico y contraseña de tu registro.
+
+### - 3er paso
+
+Ya adentro de la aplicación puedes crear una lista para empezar a trabajar. Quizás podrías ponerle el nombre del proyecto que estas llevando a cabo en estos momentos.
+
+### - 4to paso
+
+Luego de crear la lista, dale click en '_see task_' para que puedas empezar a crear tus tareas.
+
+### - 5to paso
+
+Crea tu primera tarea. Puedes editarla y eliminarla si es que así lo deseas.
+
+### - 6to paso
+
+En la parte superior de tu tarea encontrarás los botones '_to do_', '_doing_' y '_done_'. Con estos puedes modificar el avance de tus tareas, es decir, si estas realizando la tarea le das click en '_doing_' y esta tarea se moverá automáticamente a esa sección.
+
+### - 7mo paso
+
+Listo. Puedes repetir estos pasos cuanto desees.
 
 ## Objetivo
 
@@ -55,19 +94,19 @@ proyecto.
 
 #### Funcionalidades
 
-* [ ] Permite crear nuevas tareas.
-* [ ] No debe dejar agregar tareas vacías de ningún tipo.
-* [ ] Permite marcar las tareas completadas.
-* [ ] Permite eliminar tareas específicas.
-* [ ] Deberá contener mínimo 2 componentes.
+* [x] Permite crear nuevas tareas.
+* [x] No debe dejar agregar tareas vacías de ningún tipo.
+* [x] Permite marcar las tareas completadas.
+* [x] Permite eliminar tareas específicas.
+* [x] Deberá contener mínimo 2 componentes.
 
 #### Desplegado
 
-* [ ] Deberá ser desplegado en gh-pages, Heroku, etc.
+* [x] Deberá ser desplegado en gh-pages, Heroku, etc.
 
 ### Hacker Edition
 
-* [ ] Editar la tarea.
+* [x] Editar la tarea.
 * [ ] Implementar las operaciones de CRUD de la data con Firebase.
 
 
