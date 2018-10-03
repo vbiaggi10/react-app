@@ -69,7 +69,7 @@ class PaintList extends Component {
             disabled="disabled"
           />
           <Link
-            to="/tasks"
+            to="/tasks/"
             onClick={() =>{this.handleInput(this.id)}}
           >
             See tasks

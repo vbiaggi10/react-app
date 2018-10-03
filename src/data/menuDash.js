@@ -5,6 +5,6 @@ export default [
   },
   {
     title: "",
-    url: "/tasks"
+    url: "/tasks/"
   }
 ];
